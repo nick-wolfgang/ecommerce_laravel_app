@@ -62,6 +62,15 @@ class ProductController extends Controller
         else
             return redirect('products.index');
    }
+   public function search_products(Request $req)
+   {
+        $search = Products::where('name', 'like', "%$req->search%");
+        return view('products.pro_search', [
+            'products' => $search,
+            'result' => 'Search results for "' . "$req->search" . '"'
+        ]);
+
+   }
    public function buy_product($id)
    {
         // dd('dfghjk');

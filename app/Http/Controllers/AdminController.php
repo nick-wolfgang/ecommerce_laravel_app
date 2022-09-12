@@ -50,7 +50,7 @@ class AdminController extends Controller
     }
     public function view_categories()
     {
-        $cats = Category::all();
+        $cats = Category::paginate(5)->withPath('/admin/categories');
         return view('admin.categories', [
             'cats' => $cats
         ]);

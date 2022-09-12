@@ -58,7 +58,11 @@
             </tbody>
         </table>
     </div>
-    
+    {{-- @if ($cats->count()>5) 
+        <div class="w-auto my-4 p-3 bg-gray-200 rounded">
+            {{ $cats->links() }}
+        </div>
+    @endif --}}
 </div>
 
 @endsection

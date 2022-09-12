@@ -27,6 +27,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 // Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::get('/products/{id}/category', [ProductController::class, 'category'])->name('product.category');
 Route::get('products/{id}/details', [ProductController::class, 'details'])->name('products.details');
+Route::get('/products/search', [ProductController::class, 'search_products'])->name('products.search');
 
 
 
@@ -55,7 +56,7 @@ Route::middleware('auth')->group(
             Route::get('/products/{id}/buy', [ProductController::class, 'buy_product'])->name('product.buy');
 
 }); 
-
+ 
  Route::middleware('isAdmin')->group(
     function() {
         //Admin & Auth
