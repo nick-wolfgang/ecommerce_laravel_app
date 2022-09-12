@@ -105,6 +105,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="w-auto my-4">
+        {{ $products->links() }}
+    </div>
 </div>
 
 </div>

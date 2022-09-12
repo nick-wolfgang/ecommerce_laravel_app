@@ -29,9 +29,10 @@ class AdminController extends Controller
     }
     public function products()
     {
-        $products = Products::all();
+        $products = Products::paginate(9);
+        $products->withPath('/admin/products');
         return view('admin.products', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
     

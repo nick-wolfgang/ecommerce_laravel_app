@@ -120,6 +120,9 @@
                                                     <a href="{{ route('auth.getLogin') }}" class="">Buy Now &#128176</a>
                                                 @endif
                                         </div>
+                                        <div class=" font-bold mt-1 border w-auto text-center p- hover:border-orange-500 hover:opacity-80">
+                                            <a href="">Add to cart <img src="{{ asset('images/basket5.png') }}" alt="" class="w-10 inline"></a>
+                                        </div>
                                     </div>
                             </div> 
                         @endif
@@ -166,6 +169,9 @@
                                                 @else
                                                     <a href="{{ route('auth.getLogin') }}" class="">Buy Now &#128176</a>
                                                 @endif
+                                        </div>
+                                        <div class=" font-bold mt-1 border w-auto text-center p- hover:border-orange-500 hover:opacity-80">
+                                            <a href="">Add to cart <img src="{{ asset('images/basket5.png') }}" alt="" class="w-10 inline"></a>
                                         </div>
                                     </div>
                             </div> 
