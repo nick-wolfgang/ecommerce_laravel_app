@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Products;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -53,6 +54,7 @@ class ProductController extends Controller
         if(Category::where('id', $id)) {
             $category = Category::where('id', $id)->first();
             $products = Products::where('category_id', $category->id)->get();
+            // dd($products);
             return view('products.index_cat', [
                 'category' => $category,
                 'products' => $products,
@@ -64,9 +66,12 @@ class ProductController extends Controller
    }
    public function search_products(Request $req)
    {
-        $search = Products::where('name', 'like', "%$req->search%");
+        $category_list = Category::query()->get();
+        $products = DB::table('products')->where('name', 'LIKE', "%$req->search%")->get();
+
         return view('products.pro_search', [
-            'products' => $search,
+            'products' => $products,
+            'category_list' => $category_list,
             'result' => 'Search results for "' . "$req->search" . '"'
         ]);
 
