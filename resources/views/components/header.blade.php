@@ -22,7 +22,7 @@
                         focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Enter product's name" required
                     >
-                    <input type="submit" class="w-auto mt-2 cursor-pointer bg-white font-semibold px-2 py-2 rounded-sm hover:bg-gray-100" value="Search">
+                    <input type="submit" class="w-auto mt-1 cursor-pointer bg-white font-semibold px-2 py-2 rounded-sm hover:border hover:bg-gray-100" value="Search&#128270;">
                 </div>
             </form>
     </div>

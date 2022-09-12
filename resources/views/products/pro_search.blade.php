@@ -41,12 +41,21 @@
     </div>
 </div>
 
-search results
-{{ $result }}
-<div class="">
+<div class="my-6 mx-12">
+    <span class="text-2xl text-gray-800">&#128270; Search results for "<span class="font-semibold text-3xl font-mono">{{ $result }}</span>"</span>
+</div>
+<hr>
+
+<div class="bg-gray-100 p-2">
     {{-- @if ($products->isNotEmpty()) --}}
     @foreach ($products as $product)
-        {{ $product->name }}
+        <a href="{{ route('products.details', ['id' => $product->id]) }}" class="hover:text-white hover:bg-blue-200  font-semibold">
+            <div class="flex flex-row justify-between my-2 mx-96 bg-gray-50 hover:bg-gray-200 w-auto p-3">
+                {{ $product->name }}
+                {{-- <a href="{{ route('products.details', ['id' => $product->id]) }}" class="hover:bg-blue-200 hover:text-white">See details &#128073;</a> --}}
+                <hr>
+            </div>
+        </a>
     @endforeach
     
     {{-- @foreach ($products as $product)

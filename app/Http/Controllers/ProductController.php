@@ -72,9 +72,8 @@ class ProductController extends Controller
         return view('products.pro_search', [
             'products' => $products,
             'category_list' => $category_list,
-            'result' => 'Search results for "' . "$req->search" . '"'
+            'result' => "$req->search"
         ]);
-
    }
    public function buy_product($id)
    {
