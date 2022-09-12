@@ -57,7 +57,9 @@
             </tbody>
         </table>
     </div>
-    
+    <div class="w-auto my-4 p-3 bg-gray-200 rounded">
+        {{ $users->links() }}
+    </div>
 </div>
 
 @endsection

@@ -22,15 +22,14 @@ class AdminController extends Controller
     }
     public function users()
     {
-        $users = User::all();
+        $users = User::paginate(9)->withPath('/admin/users');
         return view('admin.users', [
             'users' => $users
         ]);
     }
     public function products()
     {
-        $products = Products::paginate(9);
-        $products->withPath('/admin/products');
+        $products = Products::paginate(9)->withPath('/admin/products');
         return view('admin.products', [
             'products' => $products,
         ]);
