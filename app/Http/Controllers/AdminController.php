@@ -9,6 +9,7 @@ use App\Providers\AdminProvider;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -53,6 +54,32 @@ class AdminController extends Controller
         $cats = Category::paginate(5)->withPath('/admin/categories');
         return view('admin.categories', [
             'cats' => $cats
+        ]);
+    }
+    public function admin_search(Request $req)
+    {
+        $products = DB::table('products')->where('name', 'LIKE', "%$req->search%")->get();
+        $users = DB::table('users')->where('name', 'LIKE', "%$req->search%")->get();
+
+        return view('admin.admin_search', [
+            'products' => $products,
+            'users' => $users,
+            'result' => "$req->search"
+        ]);
+
+    }
+    public function view_user($id)
+    {
+        if(User::find($id))
+            $user = User::find($id);
+        return view('');
+    }
+    public function view_product($id)
+    {
+        if(Products::find($id))
+            $product = Products::find($id);
+        return view('admin.view_prod', [
+            'product' => $product
         ]);
     }
     public function logout()

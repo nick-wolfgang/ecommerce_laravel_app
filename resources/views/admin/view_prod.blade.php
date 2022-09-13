@@ -48,7 +48,6 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $product)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="p-4 w-32">
                     @if ($product->image)
@@ -101,16 +100,11 @@
                         <input  class="font-medium text-red-600 dark:text-red-500 hover:underline" type="submit" value="Remove">
                     </form>
                 </td>
-            </tr>
-        @endforeach
-        
+            </tr>        
         </tbody>
         
             
     </table>
-    <div class="w-auto my-4 p-3 bg-gray-200 rounded">
-        {{ $products->links() }}
-    </div>
 </div>
 
 </div>
