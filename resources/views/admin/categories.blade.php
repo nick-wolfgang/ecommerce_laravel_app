@@ -44,13 +44,13 @@
                         {{ $cat->name }}
                     </td>
                     <td class="py-4 px-6">
-                        <a href="{{ route('edit.category', ['id' => $cat['id']] ) }}" class="font-medium text-green-600 hover:underline">
+                        <a href="{{ route('edit.category', ['id' => $cat['id']] ) }}" class="font-medium text-green-600 hover:underline" disabled>
                             Edit
                         </a>
                         <form action="{{ route('delete.category', ['id' => $cat['id']] ) }}" method="post">
                             @method('DELETE')
                             @csrf
-                            <input  class="font-medium text-red-600 dark:text-red-500 hover:underline" type="submit" value="Remove">
+                            <input  class="font-medium text-red-600 dark:text-red-500 hover:underline" type="submit" disabled value="Remove">
                         </form>
                     </td>
                 </tr>

@@ -74,10 +74,41 @@
             <span class="text-2xl text-gray-800"><span class="text-xl text-gray-600 italic underline">Description</span> : {{ $product->description }}</span>
         </div>
 
-        <div class="">
-
+        <div class=" p-2 bg-gray-100">
+            <div class="flex flex-row justify-center items-center py-2">
+                <span class="p-2 text-white bg-green-500 mx-4 rounded text-xl font-bold bg-gray-100 drop-shadow">3,9</span>
+                <span class="text-sm text-gray-400">N° of rates : 215</span>
+            </div>
+            <form action="" method="get" class=" bg-gray-200 my-2">
+                @csrf
+                <div class="flex flex-row justify-center items-center mb-2">
+                    <div class="items-center justify-center mx-2 border border-gray-300">
+                        <p class="" style="font-size:20px;">Bad &#128577;</p>
+                        <input type="radio" name="rate" value="1" class="ml-2" required>
+                    </div>
+                    <div class="items-center justify-center  mx-2 border border-gray-300">
+                        <p class="" style="font-size:20px;">Fair &#128530;</p>
+                        <input type="radio" name="rate" value="2 border border-gray-300" required>
+                    </div>
+                    <div class="items-center justify-center mx-2 border border-gray-300">
+                        <p class="" style="font-size:20px;">Good &#128578;</p>
+                        <input type="radio" name="rate" value="3" required>
+                    </div>
+                    <div class="items-center justify-center mx-2 border border-gray-300">
+                        <p class="" style="font-size:20px;">Better &#128524;</p>
+                        <input type="radio" name="rate" value="4" class="rating" required>
+                    </div>
+                    <div class="items-center justify-center mx-2 border border-gray-300">
+                        <p class="" style="font-size:20px;">Best &#128525;</p>
+                        <input type="radio" name="rate" value="5" required>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center">
+                    <input type="submit" value="Rate this product" class="p-2 border border-blue-300 mb-2 hover:bg-blue-500 hover:text-white">
+                </div>
+            </form>
         </div>
-
+        <hr>
 
         <div class="grid grid-cols-2 gap-2 my-4">
             <div class="col-span-1 border-l-8 border-indigo-400 p-2">
@@ -121,7 +152,11 @@
                                                 @endif
                                         </div>
                                         <div class=" font-bold mt-1 border w-auto text-center p- hover:border-orange-500 hover:opacity-80">
-                                            <a href="">Add to cart <img src="{{ asset('images/basket5.png') }}" alt="" class="w-10 inline"></a>
+                                            @if (Auth::check())
+                                                <a href="">Add to cart <img src="{{ asset('images/basket5.png') }}" alt="" class="w-10 inline"></a>
+                                            @else
+                                                <a href="{{ route('auth.getLogin') }}" class="">Add to cart</a>
+                                            @endif
                                         </div>
                                     </div>
                             </div> 

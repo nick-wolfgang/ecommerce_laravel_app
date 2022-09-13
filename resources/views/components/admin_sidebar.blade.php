@@ -15,7 +15,7 @@
                      <input type="text" name="search" id="name" class="h-8 mt-2 w-full
                            appearance-none-none block w-full px-2 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  
                            focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm rounded-l"
-                           placeholder="search" required
+                           placeholder="search products or users" required
                      >
                      <input type="submit" class="w-auto h-auto mt-1 cursor-pointer bg-white font-semibold p-2 border border-gray-400 rounded hover:border hover:bg-gray-100" value="&#128270;">
                   </div>
