@@ -28,31 +28,36 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                    <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ $user->id }}
-                    </th>
-                    <td class="py-4 px-6">
-                        {{ $user->name }}
-                    </td>
-                    <td class="py-4 px-6">
-                        {{ $user->email }}
-                    </td>
-                    <td class="py-4 px-6">
-                        @if ($user->admin)
-                            &#10003;
-                        @else
-                            &#10060;
-                        @endif
-                    </td>
-                    <td class="py-4 px-6">
-                        <form action="{{ route('delete_user', ['id' => $user['id']] ) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <input  class="font-medium text-red-600 dark:text-red-500 hover:underline" type="submit" value="Remove">
-                        </form>
-                    </td>
-                </tr>
+                    <div class="hover:bg-gray-200">
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 ">
+                                <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $user->id }}
+                                </th>
+                                <td class="py-4 px-6">
+                                    {{ $user->name }}
+                                </td>
+                                <td class="py-4 px-6">
+                                    {{ $user->email }}
+                                </td>
+                                <td class="py-4 px-6">
+                                    @if ($user->admin)
+                                        &#10003;
+                                    @else
+                                        &#10060;
+                                    @endif
+                                </td>
+                                <td class="py-4 px-6">
+                                    <form action="{{ route('delete_user', ['id' => $user['id']] ) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input  class="font-medium text-red-600 dark:text-red-500 hover:underline" type="submit" value="Remove">
+                                    </form>
+                                </td>
+                                <td>
+                                    <a href="{{ route('view.user', ['id' => $user['id']]) }}" class="text-blue-500 font-body hover:bg-gray-100 border p-2 border-blue-100">User Statistics</a>
+                                </td>
+                        </tr>
+                    </div>
                 @endforeach
             </tbody>
         </table>

@@ -54,6 +54,43 @@
                 </tr>
             </tbody>
         </table>
+        <div class="p-2 w-auto">
+            <span class="mt-10 font-mono text-2xl font-semibold text-orange-500 bg-gray-50 w-fill">User Statistics</span>
+            <div class="text-center drop-shadow-xl rounded-md w-auto">
+                <table>
+                    <thead class="text-xl text-gray-700 border rounded bg-gray-50  dark:text-gray-400">
+                        <tr class="bg-gray-100">
+                            <th scope="col" class="py-3 px-6 uppercase">
+                                Title
+                            </th>
+                            <th scope="col" class="py-3 px-6 uppercase">
+                                Information
+                            </th>
+                        </tr>
+                        <tr class="text-gray-400">
+                            <th class="py-3 px-6">N° of products</th>
+                            <th class="py-3 px-6">{{ $products->count() }}</th>
+                        </tr>
+                        <tr class="bg-gray-100 text-gray-400">
+                            <th class="py-3 px-6">Products sold</th>
+                            <th class="py-3 px-6">0</th>
+                        </tr>
+                        <tr class="text-gray-400">
+                            <th class="py-3 px-6">Income in USD</th>
+                            <th class="py-3 px-6">0.00$</th>
+                        </tr>
+                        <tr class="bg-gray-100 text-gray-400">
+                            <th class="py-3 px-6">N° of views for (Products)</th>
+                            <th class="py-3 px-6">3</th>
+                        </tr>
+                        <tr class="text-gray-400">
+                            <th class="py-3 px-6">Rating</th>
+                            <th class="py-3 px-6"><span class="text-green-400"><i>Good</i></span></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 

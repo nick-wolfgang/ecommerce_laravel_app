@@ -72,8 +72,10 @@ class AdminController extends Controller
     {
         if(User::find($id))
             $user = User::find($id);
+            $products = Products::where('user_id', $user->id);
         return view('admin.view_user', [
-            'user' => $user
+            'user' => $user,
+            'products' => $products
         ]);
     }
     public function view_product($id)
