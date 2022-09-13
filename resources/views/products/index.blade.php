@@ -81,7 +81,7 @@
                 </div>
                 <div class="grid grid-cols-4 gap-8 bg-gray-100 p-4">
                     @foreach ($products->random(4) as $prod)
-                        <div class="drop-shadow grid grid-cols-2 overflow-hidden border border-2 border-blue-100 p-2 hover:opacity-85 shadow shadow bg-white min-w-12 ">
+                        <div class="drop-shadow grid grid-cols-2 overflow-hidden relative border border-2 border-blue-100 p-2 hover:opacity-85 shadow shadow bg-white min-w-12 ">
                             <a href="cursor">
                                 <img loading="lazy" src="{{asset($prod->image)}}" class="p-2 col-span-1 w-full sm:h-48 md:40 lg:35 xl:10 object-cover" alt="img">
                                 <div class="col-span-1 border-l-2 border-gray-300 p-2">
@@ -112,6 +112,9 @@
                                     </div> --}}
                                 </div>
                             </a>
+                            <div class="absolute top-31 left-4">
+                                <span class="" style="font-size:25px;">&#129351;</span>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -127,8 +130,8 @@
                     <div class="grid grid-cols-4 gap-8 bg-gray-100 p-4">
                         @if ($cat->products)
                             @forelse ($cat->products->random(4) as $prod)
-                                <div class="drop-shadow grid grid-cols-2 overflow-hidden border border-2 border-blue-100 p-2 hover:opacity-85 shadow shadow bg-white min-w-12 ">
-                                    <a href="cursor">
+                                <div class=" drop-shadow grid grid-cols-2 overflow-hidden border border-2 border-blue-100 p-2 hover:opacity-85 shadow shadow bg-white min-w-12 ">
+                                    <a href="cursor relative">
                                             <img src="{{asset($prod->image)}}" class="p-2 col-span-1 w-full sm:h-48 md:40 lg:35 xl:10 object-cover" alt="img">
                                         <div class="col-span-1 border-l-2 border-gray-300 p-2">
                                             <div class="">
@@ -157,6 +160,16 @@
                                                 <a href="">Buy Now &#128176</a>
                                             </div> --}}
                                         </div>
+                                        @if ($prod->rate > 0.0)
+
+                                        <div class="absolute top-5">
+                                            <span class="p-2 text-white bg-green-500 mx-4 rounded text-xl font-semibold bg-gray-100 drop-shadow">
+                                                {{ $prod->rate }} &#128276;
+                                            </span>
+                                        </div>
+                                        @else
+
+                                        @endif
                                     </a>
                                 </div>
                             @empty

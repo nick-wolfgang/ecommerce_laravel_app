@@ -28,6 +28,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{id}/category', [ProductController::class, 'category'])->name('product.category');
 Route::get('products/{id}/details', [ProductController::class, 'details'])->name('products.details');
 Route::get('/products/search', [ProductController::class, 'search_products'])->name('products.search');
+Route::post('/product/rate/{id}', [ProductController::class, 'rating'])->name('product.rate');
 
 
 

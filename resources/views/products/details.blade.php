@@ -76,19 +76,26 @@
 
         <div class=" p-2 bg-gray-100">
             <div class="flex flex-row justify-center items-center py-2">
-                <span class="p-2 text-white bg-green-500 mx-4 rounded text-xl font-bold bg-gray-100 drop-shadow">3,9</span>
-                <span class="text-sm text-gray-400">N° of rates : 215</span>
+                <span class="font-semibold text-l">Rating : </span>
+                <span class="p-2 text-white bg-green-500 mx-4 rounded text-xl font-bold bg-gray-100 drop-shadow">
+                    @if ($product->rate == null)
+                        0.0
+                    @else
+                        {{ $product->rate }} / 5
+                    @endif
+                </span>
+                <span class="text-sm text-gray-400">N° of rates : {{ $product->num_rates }}</span>
             </div>
-            <form action="" method="get" class=" bg-gray-200 my-2">
+            <form action="{{ route('product.rate', ['id' => $product->id]) }}" method="post" class=" bg-gray-200 my-2">
                 @csrf
                 <div class="flex flex-row justify-center items-center mb-2">
                     <div class="items-center justify-center mx-2 border border-gray-300">
-                        <p class="" style="font-size:20px;">Bad &#128577;</p>
+                        <p class="" style="font-size:10px;">Bad &#128577;</p>
                         <input type="radio" name="rate" value="1" class="ml-2" required>
                     </div>
                     <div class="items-center justify-center  mx-2 border border-gray-300">
                         <p class="" style="font-size:20px;">Fair &#128530;</p>
-                        <input type="radio" name="rate" value="2 border border-gray-300" required>
+                        <input type="radio" name="rate" value="2" required>
                     </div>
                     <div class="items-center justify-center mx-2 border border-gray-300">
                         <p class="" style="font-size:20px;">Good &#128578;</p>

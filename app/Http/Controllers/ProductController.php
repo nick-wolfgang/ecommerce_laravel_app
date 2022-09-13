@@ -31,6 +31,8 @@ class ProductController extends Controller
         $category_list = Category::query()->get();
         $product_all = Products::all();
         $product = Products::where('id', $id)->first();
+
+        
         return view('products.details', [
             'product' => $product,
             'category_list' => $category_list,
@@ -74,6 +76,19 @@ class ProductController extends Controller
             'category_list' => $category_list,
             'result' => "$req->search"
         ]);
+   }
+   public function rating(Request $req, $id)
+   {
+        $product = Products::find($id);
+        // dd($req->rate);
+        $product->rating_pts += $req->rate;
+        $product->num_rates += 1.0;
+        $product->rate = $product->rating_pts/$product->num_rates;
+// dd($product->rate);
+        $product->save();
+        return redirect()->route('products.details', ['id' => $product->id,
+        'product' => $product
+    ]);
    }
    public function buy_product($id)
    {
