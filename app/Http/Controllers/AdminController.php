@@ -72,7 +72,9 @@ class AdminController extends Controller
     {
         if(User::find($id))
             $user = User::find($id);
-        return view('');
+        return view('admin.view_user', [
+            'user' => $user
+        ]);
     }
     public function view_product($id)
     {
