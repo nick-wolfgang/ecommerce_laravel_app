@@ -161,15 +161,20 @@
                                                 <a href="">Buy Now &#128176</a>
                                             </div> --}}
                                         </div>
-                                        @if ($prod->rate > 0.0)
-
+                                        @if ($prod->rate == 1 || $prod->rate == 2 || $prod->rate == 3 || $prod->rate == 4 || $prod->rate == 5)
                                         <div class="absolute top-5">
-                                            <span class="p-2 text-white bg-green-500 mx-4 rounded text-xl font-semibold bg-gray-100 drop-shadow">
-                                                {{ $prod->rate }} &#128276;
+                                            <span class="p-2 text-white bg-green-400 mx-4 rounded text-xl font-semibold bg-gray-100 drop-shadow">
+                                                {{ $prod->rate }}.0 &#128276;
                                             </span>
                                         </div>
                                         @else
-
+                                            @if ($prod->rate > 0.0)
+                                            <div class="absolute top-5">
+                                                <span class="p-2 text-white bg-green-400 mx-4 rounded text-xl font-semibold bg-gray-100 drop-shadow">
+                                                    {{ $prod->rate }} &#128276;
+                                                </span>
+                                            </div>
+                                            @endif
                                         @endif
                                     </a>
                                 </div>
