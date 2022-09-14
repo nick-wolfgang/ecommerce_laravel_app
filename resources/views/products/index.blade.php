@@ -113,7 +113,8 @@
                                 </div>
                             </a>
                             <div class="absolute top-31 left-4">
-                                <span class="" style="font-size:25px;">&#129351;</span>
+                                {{-- <span class="" style="font-size:25px;">&#129351;</span> --}}
+                                <img src="images/be.png" style="width: 15%;" alt="">
                             </div>
                         </div>
                     @endforeach
