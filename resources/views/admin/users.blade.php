@@ -21,13 +21,20 @@
             @if(isset($users_search_results))
                 <div class="inline-flex flex-col justify-center items-center relative text-gray-500">
                     <ul class="bg-white border border-gray-100 w-full mt-2 p-10">
-                        <h6><i>Search results : </i><b>{{ $input }}</b></h6>
+                        <h6><i class="text-sm ">Search results for : </i><b>{{ $input }}</b></h6>
                         <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative ">
                             <div class="flex flex-col">
-                                @foreach($users_search_results as $user)
-                                    <span class="cursor-pointer hover:bg-yellow-50 hover:text-gray-900">&#128100  -  {{ $user->name }}</span>
-                                    <!-- <p></p> -->
-                                @endforeach
+                                @if($users_search_results->isNotEmpty())
+                                    @foreach($users_search_results as $user)
+                                        <a href="{{ route('view.user', ['id' => $user->id]) }}" class="">
+                                            <span class="cursor-pointer hover:bg-yellow-50 hover:text-gray-900">
+                                                &#128100  -  {{ $user->name }}
+                                            </span>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <span>No user found </span>
+                                @endif
                             </div>
                         </li>
                     </ul>
