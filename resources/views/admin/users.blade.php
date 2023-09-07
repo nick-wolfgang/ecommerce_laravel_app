@@ -5,6 +5,38 @@
 
 <div class="">
 
+    <div class="p-6 flex flex-col justify-center items-center h-auto">
+        <form class="" action="{{ route('user.search') }}" method="get">
+            @csrf
+            <div class="flex items-center justify-center h-auto">
+                <input type="text" name="search" id="name" class="h-8 mt-2 
+                                appearance-none-none block w-full px-2 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  
+                                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                placeholder="Enter user's name" required
+                >
+                <input type="submit" class="w-auto p-1 mt-2 h-full border border-gray-300 cursor-pointer bg-white rounded-sm  hover:bg-gray-100" value="&#128270;">
+            </div>
+        </form>
+        <div>
+            @if(isset($users_search_results))
+                <div class="inline-flex flex-col justify-center items-center relative text-gray-500">
+                    <ul class="bg-white border border-gray-100 w-full mt-2 p-10">
+                        <h6><i>Search results : </i><b>{{ $input }}</b></h6>
+                        <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative ">
+                            <div class="flex flex-col">
+                                @foreach($users_search_results as $user)
+                                    <span class="cursor-pointer hover:bg-yellow-50 hover:text-gray-900">&#128100  -  {{ $user->name }}</span>
+                                    <!-- <p></p> -->
+                                @endforeach
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+        </div>
+    </div>
+    
+</div>
     <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

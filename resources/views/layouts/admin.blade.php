@@ -11,7 +11,7 @@
                 @include('components.admin_header')
                 @show
             </div>
-            <div class="overflow-auto sticky hover:scroll">
+            <div class="overflow-auto sticky ">
                 @yield('content')
             </div>
         </div>    

@@ -11,17 +11,14 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     //
-    public function index(Request $req)
+    public function index()
     {
 
-        $user = $req->user();
-        //$products = Products::query()->where('user_id', $user->id)->get();
+        // $products = Products::query()->where('user_id', $user->id)->get();
         $category_list = Category::query()->get();
-        $user = User::query()->get();
         // $product = Products::query()->get();
         $product = Products::all();
         return view('products.index', [
-            'users' => $user,
             'products' => $product,
             'category_list' => $category_list,
         ]);
@@ -32,7 +29,6 @@ class ProductController extends Controller
         $product_all = Products::all();
         $product = Products::where('id', $id)->first();
 
-        
         return view('products.details', [
             'product' => $product,
             'category_list' => $category_list,

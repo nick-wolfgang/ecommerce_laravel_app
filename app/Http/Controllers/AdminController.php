@@ -21,16 +21,31 @@ class AdminController extends Controller
     {
         return view('admin.home');
     }
-    public function users()
+    public function users(Request $req)
     {
-        $users = User::paginate(9)->withPath('/admin/users');
-        return view('admin.users', [
-            'users' => $users
-        ]);
+        $users = User::paginate(5)->withPath('/admin/users');
+        $users_search_results = DB::table('users')->where('name', 'LIKE', "%$req->search%")->get();
+        $input = Request("search");
+        //User Search 
+        // dd($input);
+
+        if ($input){
+            return view('admin.users', [
+                'users' => $users,
+                "users_search_results" => $users_search_results,
+                "input" => $input
+            ]);
+        }
+        // dd($req);
+        else{
+            return view('admin.users', [
+                'users' => $users,
+            ]);
+        }
     }
     public function products()
     {
-        $products = Products::paginate(9)->withPath('/admin/products');
+        $products = Products::paginate(5)->withPath('/admin/products');
         return view('admin.products', [
             'products' => $products,
         ]);
@@ -68,11 +83,20 @@ class AdminController extends Controller
         ]);
 
     }
-    public function view_user($id)
+    // public function user_search(Request $req)
+    // {
+
+    //     $users = DB::table('users')->where('name', 'LIKE', "%$req->search%")->get();
+    //     // dd($users);
+    //     return view('admin.users', [
+    //         'users_search_results' => $users
+    //     ]);
+    // }
+    public function view_user($req)
     {
-        if(User::find($id))
-            $user = User::find($id);
-            $products = Products::where('user_id', $user->id);
+        if(User::find($req))
+            $user = User::find($req);
+            $products = Products::where('user_id', $user->req);
         return view('admin.view_user', [
             'user' => $user,
             'products' => $products

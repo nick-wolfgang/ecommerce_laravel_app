@@ -8,16 +8,16 @@
     </div>
     <div class="flex flex-row items-center">
         
-            {{-- <input type="text" name="name" id="name" class="h-8 mt-2 w-full
+            <!-- {{-- <input type="text" name="name" id="name" class="h-8 mt-2
                 appearance-none-none block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  
                 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                  placeholder="Search products"
             >
-            <img src="{{asset('images/search-icons.png')}}" alt="search-icon" class="w-10 h-8 mt-2 cursor-pointer"> --}}
+            <img src="{{asset('images/search-icons.png')}}" alt="search-icon" class="w-10 h-8 mt-2 cursor-pointer"> --}} -->
             <form action="{{ route('products.search') }}" method="get">
                 @csrf
                 <div class="flex items-center ">
-                    <input type="text" name="search" id="name" class="h-8 mt-2 w-full
+                    <input type="text" name="search" id="name" class="h-8 mt-2 
                         appearance-none-none block w-full px-2 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  
                         focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Enter product's name" required

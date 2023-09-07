@@ -75,6 +75,7 @@ Route::middleware('auth')->group(
         Route::delete("/admin/category/{id}/delete", [CategoryController::class, 'delete_category'])->name('delete.category');
 
         Route::get('admin/search', [AdminController::class, 'admin_search'])->name('admin.search');
+        Route::get('admin/user/search', [AdminController::class, 'users'])->name('user.search');
         Route::get('admin/user/{id}/details', [AdminController::class, 'view_user'])->name('view.user');
         Route::get('admin/product/{id}/details', [AdminController::class, 'view_product'])->name('view.product');
 
