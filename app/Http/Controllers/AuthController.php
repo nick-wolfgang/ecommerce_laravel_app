@@ -17,17 +17,26 @@ class AuthController extends Controller
     }
     public function postLogin(Request $req)
     {
-        $user = User::query()->where("email", $req->email)->first();
-        if(!$user) {
-            return redirect()->back()->withErrors(['email' => 'User does not exist']);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $test_login = false;
+
+        if(Auth::attempt(['email' => $email, 'password' => $password])){
+            $user = User::query()->where("email", $req->email)->first();
+            if(!$user) {
+                return redirect()->back()->withErrors(['email' => 'User does not exist']);
+            }
+            if(!Hash::check($req->password, $user->password)){
+                return redirect()->back()->withErrors(['password' => 'Invalid Credentials']);
+            }
+            Auth::login($user, $req->remember);
+            if($user->admin)
+                return redirect()->intended('/admin')->with('status', 'Welcome To Your Dashboard');
+            return redirect()->intended(RouteServiceProvider::HOME)->with('status', 'Logged in successfully');
         }
-        if(!Hash::check($req->password, $user->password)){
-            return redirect()->back()->withErrors(['password' => 'Invalid Credentials']);
-        }
-        Auth::login($user, $req->remember);
-        if($user->admin)
-            return redirect()->intended('/admin')->with('status', 'Welcome To Your Dashboard');
-        return redirect()->intended(RouteServiceProvider::HOME)->with('status', 'Logged in successfully');;
+        return view('auth.login', [
+            'test_login' => $test_login
+        ]);
     }
     public function getRegister()
     {

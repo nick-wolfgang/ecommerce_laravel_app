@@ -12,6 +12,9 @@
             </span></h2>
         
         </div>
+        @if(isset($test_login))
+            <p>Incorrect login information :(</p>
+        @endif
         <form class="mt-8 space-y-6" action="{{route('auth.postLogin')}}" method="POST">
             @csrf
             <input type="hidden" name="remember" value="true">
@@ -34,14 +37,12 @@
                     @enderror
                 </div>
             </div>
-
-        <div class="flex items-center justify-between">
-            <div></div>
-            <div class="text-sm ">
-                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 "> Forgot your password? </a>
-            </div>
-        </div>
-
+            @if(isset($test_login))
+                <div class="flex items-center justify-around">
+                    <a href="#" class="text-sm font-medium text-orange-400 hover:text-orange-500 hover:underline"> Forgot your password? </a>
+                    <a href="#" class="text-sm font-medium text-orange-400 hover:text-orange-500 hover:underline"> Forgot your email? </a>
+                </div>
+            @endif
         <div>
             <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
